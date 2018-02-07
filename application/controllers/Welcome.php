@@ -43,9 +43,10 @@ class Welcome extends CI_Controller {
 						'no_surat' => $this->input->post('nosur'),
 						'dari' => $this->input->post('dari'),
 						'perihal' => $this->input->post('perihal'),
-						'pengelola'=>$this->input->post('pengelola'));
+						'pengelola'=>$this->input->post('pengelola')
+						/*'arsip' => 0*/);
 		$this->masuk->add_masuk('surat_masuk',$object);
-		redirect('Welcome/masuk');
+		redirect('Welcome/desposisi');
 	}
 
 	public function delmasuk($id)
@@ -120,6 +121,14 @@ class Welcome extends CI_Controller {
 	{
 		$data['arsip'] = $this->db->get('kode_agenda')->result();
 		$this->load->view('super-admin/arsip',$data);
+	}
+
+	public function detail_arsip($kode)
+	{
+		$kode = array('kode_agenda' => $kode,
+						'arsip' => 1 );
+		$data['detail'] = $this->db->get_where('surat_masuk' ,$kode)->result();
+		$this->load->view('super-admin/detail_arsip', $data);
 	}
 
 		public function kirim($id)

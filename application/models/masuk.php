@@ -103,16 +103,6 @@ public function editsuker($table,$object,$where)
 
 	//tutup kode agenda
 
-	//arsip
-
-		public function arsip($table)
-	 {
-	 	$query = $this->db->get('arsip')->result();
-	 	return $query;
-	 }
-
-	 //tutup arsip
-
 	
 
 }
