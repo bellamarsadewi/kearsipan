@@ -10,7 +10,9 @@
 <div class="main-panel">
     <?php include 'navigasi.php'; ?>
 
-                <form method="post" action="<?php echo base_url('index.php/Welcome/add_despos'); ?>">
+
+                    <?php foreach ($tambah as $t): ?>
+                <form method="post" action="<?php echo base_url('index.php/Welcome/add_despos/').$t->id_masuk; ?>">
                     <div class="col-lg-12 col-md-12">
                         <div class="card">
                             <div class="header">
@@ -19,40 +21,17 @@
                             <div class="content">
                                 <form>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Tanggal Surat</label>
-                                                <input type="date" class="form-control border-input" name="tanggal">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Asal Surat</label>
-                                                <input type="text" class="form-control border-input" name="asal">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>No Surat</label>
-                                                <input type="text" class="form-control border-input" name="nosur">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Perihal</label>
-                                                <input type="text" class="form-control border-input" name="perihal">
-                                            </div>
                                             <div class="form-group">
                                                 <label>Tanggal Diterima</label>
-                                                <input type="date" class="form-control border-input" name="diterima">
+                                                <input type="date" class="form-control border-input" name="diterima" value="<?php echo $t->diterima_tgl; ?>">
                                             </div>
-                                            <div class="form-group">
-                                                <label>Kode Agenda</label>
-                                                <input type="text" class="form-control border-input" name="kode">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Pemberi Desposisi</label>
-                                                <input type="text" class="form-control border-input" name="pemberi">
+                                                <input type="text" class="form-control border-input" name="pemberi" value="<?php echo $t->pemberi_despos; ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label>Untuk</label>
-                                                <select name="untuk" class="form-control">
+                                                <select name="untuk" class="form-control" value="<?php echo $t->untuk; ?>">
                                                     <option value="Diketahui">Diketahui</option>
                                                     <option value="Dipersiapkan konsep">Dipersiapkan konsep</option>
                                                     <option value="Dijawab/direspon">Dijawab/direspon</option>
@@ -67,11 +46,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Isi Desposisi</label>
-                                                <input type="textarea" class="form-control border-input" name="isi">
+                                                <input type="textarea" class="form-control border-input" name="isi" value="<?php echo $t->isi_despos; ?>">
                                             </div>
                                             <div class="form-group">
                                             <label>Diteruskan ke: </label>
-                                            <select name="terusan" class="form-control">
+                                            <select name="terusan" class="form-control" value="<?php echo $t->terusan; ?>">
                                                 <option value="KTU">KTU</option>
                                                 <option value="WK1">WK1</option>
                                                 <option value="WK2">WK2</option>
@@ -82,11 +61,11 @@
                                             </div>
                                             <div class="form-control">
                                                 <button type="submit" class="btn btn-info btn-fill btn-wd">Tambah</button>
-                                            </div>
-                                        </div>  
+                                            </div>  
                                     </div>
                                     <div class="clearfix"></div>
                                 </form>
+                                <?php endforeach ?>
                             </div>
                         </div>
                     </div>

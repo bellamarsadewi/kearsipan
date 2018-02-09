@@ -46,7 +46,18 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Jenis Surat</label>
+                                                <select class="form-control" name="jenis">
+                                                    <option value="PRIBADI">PRIBADI</option>
+                                                    <option value="RESMI">RESMI</option>
+                                                    <option value="RAHASIA">RAHASIA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">

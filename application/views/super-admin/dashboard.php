@@ -22,8 +22,8 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Capacity</p>
-                                            105GB
+                                            <p>SURAT MASUK</p>
+                                            <?php echo $this->db->get('surat_masuk')->num_rows(); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -47,8 +47,8 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Revenue</p>
-                                            $1,345
+                                            <p>DESPOSISI</p>
+                                           <?php echo $this->db->get('desposisi')->num_rows(); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Errors</p>
-                                            23
+                                            <?php echo $this->db->get('arsip')->num_rows(); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -97,8 +97,8 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Followers</p>
-                                            +45
+                                            <p>ARSIP</p>
+                                            <?php echo $this->db->get('arsip')->num_rows(); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -187,34 +187,6 @@
             </div>
         </div>
 
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-
-                        <li>
-                            <a href="http://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                               Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.creative-tim.com/license">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
-                </div>
-            </div>
-        </footer>
 
     </div>
 </div>

@@ -43,7 +43,7 @@ public function editmas($table,$object,$where)
 
 	public function despos($table)
  {
- 	$query = $this->db->get('desposisi')->result();
+ 	$query = $this->db->get('surat_masuk')->result();
  	return $query;
  }
 
