@@ -142,6 +142,7 @@ class Welcome extends CI_Controller {
 			redirect('Welcome/desposisi');
 						}
 	}
+	
 	//tutup arsip
 
 	//kode agenda
