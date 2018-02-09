@@ -48,7 +48,14 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Jenis Surat</label>
+                                                <input type="text" class="form-control border-input" name="jenis" value="<?php echo $u->jenis_surat; ?>">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">

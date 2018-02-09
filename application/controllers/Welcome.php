@@ -7,7 +7,7 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('masuk');
-		$this->load->helper('url');
+		$this->load->helper('url','login','security','form');
 
 		if ($this->session->userdata('status') != "login") {
 			redirect(base_url('login'));
@@ -36,15 +36,18 @@ class Welcome extends CI_Controller {
 	public function add_masuk()
 	{
 		
+
 		$id = $this->masuk->get_masuk();
 		$object = array(
-						'tgl_surat' => $this->input->post('tanggal'),
-						'kode_agenda' => $this->input->post('kode'),
-						'no_surat' => $this->input->post('nosur'),
-						'dari' => $this->input->post('dari'),
-						'perihal' => $this->input->post('perihal'),
-						'pengelola'=>$this->input->post('pengelola')
-						/*'arsip' => 0*/);
+			'tgl_surat' 	=> $this->input->post('tanggal'),
+			'kode_agenda' 	=> $this->input->post('kode'),
+			'no_surat' 		=> $this->input->post('nosur'),
+			'jenis_surat'   => $this->input->post('jenis'),
+			'dari' 			=> $this->input->post('dari'),
+			'perihal' 		=> $this->input->post('perihal'),
+			'pengelola' 	=> $this->input->post('pengelola')
+			/*'notif' 		=> 0*/
+			);
 		$this->masuk->add_masuk('surat_masuk',$object);
 		redirect('Welcome/desposisi');
 	}
@@ -70,6 +73,7 @@ class Welcome extends CI_Controller {
 						'tgl_surat' => $this->input->post('tanggal'),
 						'kode_agenda' => $this->input->post('kode'),
 						'no_surat' => $this->input->post('nosur'),
+						'jenis_surat' => $this->input->post('jenis'),
 						'dari' => $this->input->post('dari'),
 						'perihal' => $this->input->post('perihal'),
 						'pengelola'=>$this->input->post('pengelola'));
@@ -90,26 +94,23 @@ class Welcome extends CI_Controller {
 
 	public function detail($id)
 	{
-		$where = array('id_despos' => $id);
+		$where = array('id_masuk' => $id);
+		$data['tambah'] = $this->masuk->detail('surat_masuk',$where)->result(); 
 		$data['editmas'] = $this->db->get('surat_masuk',$where)->result();
-		$data['despos'] = $this->masuk->detail('desposisi',$where)->result();
+		$data['despos'] = $this->masuk->detail('surat_masuk',$where)->result();
 		$this->load->view('super-admin/detail',$data);
 	}
 
-	public function add_despos()
+	public function add_despos($id)
 	{
-		
-		$object = array('tgl_surat' => $this->input->post('tanggal'),
-						'no_surat' => $this->input->post('nosur'),
-						'perihal' => $this->input->post('perihal'),
-						'kode_agenda' => $this->input->post('kode'),
-						'asal_surat' => $this->input->post('asal'),
+		$where = array('id_masuk' => $id );
+		$object = array(
 						'diterima_tgl' => $this->input->post('diterima'),
 						'pemberi_despos' => $this->input->post('pemberi'),
 						'terusan' => $this->input->post('terusan'),
 						'untuk' => $this->input->post('untuk'),
-						'isi_desposisi'=>$this->input->post('isi'));
-		$this->masuk->add_despos('desposisi',$object);
+						'isi_despos'=>$this->input->post('isi'));
+		$this->masuk->editmas('surat_masuk',$object,$where);
 		redirect('Welcome/desposisi');
 	}
 
@@ -173,14 +174,14 @@ class Welcome extends CI_Controller {
 
 	public function laporan_pdf($id){
 
-		$where = array('id_despos' => $id);
-		$data['tampil'] = $this->masuk->detail('desposisi',$where)->result();
+		$where = array('id_masuk' => $id);
+		$data['tampil'] = $this->masuk->detail('surat_masuk',$where)->result();
 		$this->load->view('pdf',$data);
 
     $this->load->library('pdf');
 
     $this->pdf->setPaper('A4', 'potrait');
-    $this->pdf->filename = "laporan-petanikode.pdf";
+    $this->pdf->filename = "desposisi.pdf";
     $this->pdf->load_view('pdf', $data);
 
 

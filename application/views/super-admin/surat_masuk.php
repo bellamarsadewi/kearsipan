@@ -30,6 +30,7 @@
                                     	<th>Tanggal</th>
                                     	<th>Kode Agenda</th>
                                     	<th>No Surat</th>
+                                      <th>Jenis Surat</th>
                                     	<th>Dari</th>
                                         <th>Perihal</th>
                                         <th>Pengelola</th>
@@ -45,6 +46,7 @@
                                             <td><?php echo $u->tgl_surat; ?></td>
                                             <td><?php echo $u->kode_agenda; ?></td>
                                             <td><?php echo $u->no_surat; ?></td>
+                                            <td><?php echo $u->jenis_surat; ?></td>
                                             <td><?php echo $u->dari; ?></td>
                                             <td><?php echo $u->perihal; ?></td>
                                             <td><?php echo $u->pengelola; ?></td>
@@ -68,6 +70,27 @@
 </div>
 </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#email').on('submit',function(e) {  
+  $.ajax({
+      url:'subscribe_act.php', //nama action script php sobat
+      data:$(this).serialize(),
+      type:'POST',
+      success:function(data){
+        console.log(data);
+     swal("Success!", "Message sent!", "success");
+      },
+      error:function(data){
+     swal("Oops...", "Something went wrong :(", "error");
+      }
+    });
+    e.preventDefault(); 
+  });
+});
+</script>
+
 </body>
 
   <?php include 'js.php'; ?>
