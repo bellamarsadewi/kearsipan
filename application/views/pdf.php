@@ -38,36 +38,36 @@
 	<h1 align="center">DISPOSISI</h1><br>
 	<div>
 		<?php foreach ($tampil as $d): ?>
-			<h2><label align="left">
+			<h3><label align="left">
 				Jenis Surat :
 				<?php echo $d->jenis_surat; ?>
-			</label></h2>
+			</label></h3>
 		<table border="1" align="center" height="350px" width="700px">
 			<thead>
 				<tr class="normal">
 					<th align="right">
 					Tanggal Surat 		 :
 					<?php echo $d->tgl_surat; ?>
-					<br>
+					<br><br>
 					Asal Surat 			 :
 					<?php echo $d->dari; ?>
-					<br>
+					<br><br>
 					No. Surat  			 :
 					<?php echo $d->no_surat; ?>
-					<br>
+					<br><br>
 					Perihal 			 :
 					<?php echo $d->perihal; ?>
 					</th>
 					<th>
 						Diterima Tanggal :
 						<?php echo $d->diterima_tgl; ?>
-						<br>
+						<br><br>
 						Nomor Agenda 	 :
 						<?php echo $d->kode_agenda; ?>
-						<br>
+						<br><br>
 						Pemberi Desposisi: 
 						<?php echo $d->pemberi_despos; ?>
-						<br>
+						<br><br>
 						Untuk  			:
 						<?php echo $d->untuk; ?>
 					</th>
@@ -76,13 +76,11 @@
 					<th>Isi Desposisi	:
 					<?php echo $d->isi_despos; ?>
 					</th>
-					<th></th>
+					<th>Diteruskan
+					<?php echo $d->terusan; ?>
+					</th>
 				</tr>
-				<tr>
-					<th>Diteruskan		:</th>
-					  
-					<th><?php echo $d->terusan; ?></th>
-				</tr>
+					
 			</thead>
 		</table>
 			<?php endforeach ?>
