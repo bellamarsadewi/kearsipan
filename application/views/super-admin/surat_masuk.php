@@ -18,7 +18,7 @@
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Agenda Surat Masuk
-                                    <a href="<?php echo base_url('index.php/Welcome/input_masuk'); ?>" class="btn btn-warning">Tambah</a>
+                                    <a href="<?php echo base_url('index.php/Welcome/input_masuk/'); ?>" class="btn btn-warning">Tambah</a>
                                 </h4>
                               
                             </div>
@@ -27,11 +27,11 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <th>No</th>
-                                    	<th>Tanggal</th>
-                                    	<th>Kode Agenda</th>
-                                    	<th>No Surat</th>
-                                      <th>Jenis Surat</th>
-                                    	<th>Dari</th>
+                                      	<th>Tanggal</th>
+                                      	<th>Kode Agenda</th>
+                                      	<th>No Surat</th>
+                                        <th>Jenis Surat</th>
+                                      	<th>Dari</th>
                                         <th>Perihal</th>
                                         <th>Pengelola</th>
                                         <th>Aksi</th>

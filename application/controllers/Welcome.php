@@ -30,12 +30,25 @@ class Welcome extends CI_Controller {
 
 	public function input_masuk()
 	{
-		$this->load->view('super-admin/input-masuk');
+		$data['kode'] = $this->db->get('kode_agenda')->result();
+		$this->load->view('super-admin/input-masuk',$data);
 	}
 
 	public function add_masuk()
 	{
-		
+		$config['upload_path'] = './upload/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']  = '5000';
+		$config['max_width']  = '6000';
+		$config['max_height']  = '2048';
+		$this->load->library('upload',$config);
+		$this->upload->initialize($config);
+		if ( ! $this->upload->do_upload('foto')){
+			$foto = "";
+		}
+		else{
+			$foto = $this->upload->file_name;
+		}
 
 		$id = $this->masuk->get_masuk();
 		$object = array(
@@ -45,9 +58,9 @@ class Welcome extends CI_Controller {
 			'jenis_surat'   => $this->input->post('jenis'),
 			'dari' 			=> $this->input->post('dari'),
 			'perihal' 		=> $this->input->post('perihal'),
-			'pengelola' 	=> $this->input->post('pengelola')
-			/*'notif' 		=> 0*/
-			);
+			'pengelola' 	=> $this->input->post('pengelola'),
+			'foto'			=> $foto,
+			'status' 		=> 0);
 		$this->masuk->add_masuk('surat_masuk',$object);
 		redirect('Welcome/desposisi');
 	}
@@ -87,8 +100,8 @@ class Welcome extends CI_Controller {
 	//desposisi
 	public function desposisi()
 	{
-		$data['ms'] = $this->masuk->tabmasuk('surat_masuk');
-		$data['posisi'] = $this->masuk->despos('desposisi');
+		$where = array('status' => '0' );
+		$data['ms'] = $this->db->get_where('surat_masuk',$where)->result();
 		$this->load->view('super-admin/desposisi',$data);
 	}
 
@@ -103,14 +116,14 @@ class Welcome extends CI_Controller {
 
 	public function add_despos($id)
 	{
-		$where = array('id_masuk' => $id );
+		$where  = array('id_masuk' => $id );
 		$object = array(
 						'diterima_tgl' => $this->input->post('diterima'),
 						'pemberi_despos' => $this->input->post('pemberi'),
 						'terusan' => $this->input->post('terusan'),
 						'untuk' => $this->input->post('untuk'),
 						'isi_despos'=>$this->input->post('isi'));
-		$this->masuk->editmas('surat_masuk',$object,$where);
+		$this->db->update('surat_masuk',$object,$where);
 		redirect('Welcome/desposisi');
 	}
 
@@ -127,15 +140,15 @@ class Welcome extends CI_Controller {
 	public function detail_arsip($kode)
 	{
 		$kode = array('kode_agenda' => $kode,
-						'arsip' => 1 );
+						'status' => 1 );
 		$data['detail'] = $this->db->get_where('surat_masuk' ,$kode)->result();
 		$this->load->view('super-admin/detail_arsip', $data);
 	}
 
 		public function kirim($id)
 	{
-		$where = array ('id_masuk' => $id);
-		$data = array ('arsip' => 1);
+		$where = array('id_masuk' => $id);
+		$data = array('status' => 1);
 
 		$res = $this->db->update('surat_masuk',$data ,$where);
 
