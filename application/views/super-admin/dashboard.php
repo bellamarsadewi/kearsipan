@@ -72,8 +72,8 @@
                                     </div>
                                     <div class="col-xs-7">
                                         <div class="numbers">
-                                            <p>Errors</p>
-                                            <?php echo $this->db->get('arsip')->num_rows(); ?>
+                                            <p>SURAT KELUAR</p>
+                                            <?php echo $this->db->get('surat_keluar')->num_rows(); ?>
                                         </div>
                                     </div>
                                 </div>
