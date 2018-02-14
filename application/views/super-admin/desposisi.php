@@ -82,7 +82,7 @@
                                         <tr>
                                             <?php 
                                             $no = 1;
-                                            foreach ($posisi as $p) {
+                                            foreach ($ms as $p) {
                                             ?>
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $p->diterima_tgl; ?></td>

@@ -23,15 +23,29 @@ class Suker extends CI_Controller {
 
 	public function add_suker()
 	{
+		$config['upload_path'] = './upload/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']  = '5000';
+		$config['max_width']  = '6000';
+		$config['max_height']  = '2048';
+		$this->load->library('upload',$config);
+		$this->upload->initialize($config);
+		if ( ! $this->upload->do_upload('foto')){
+			$foto = "";
+		}
+		else{
+			$foto = $this->upload->file_name;
+		}
 		
 		$id = $this->masuk->get_suker();
 		$object = array(
-						'tgl_surat' => $this->input->post('tanggal'),
-						'kode_agenda' => $this->input->post('kode'),
-						'no_surat' => $this->input->post('nosur'),
-						'kepada' => $this->input->post('kepada'),
-						'perihal' => $this->input->post('perihal'),
-						'pengelola'=>$this->input->post('pengelola'));
+						'tgl_surat' 	=> $this->input->post('tanggal'),
+						'kode_agenda'	=> $this->input->post('kode'),
+						'no_surat' 		=> $this->input->post('nosur'),
+						'kepada' 		=> $this->input->post('kepada'),
+						'perihal' 		=> $this->input->post('perihal'),
+						'pengelola'		=>$this->input->post('pengelola'),
+						'foto'			=> $foto);
 		$this->masuk->add_suker('surat_keluar',$object);
 		redirect('suker/suker');
 	}

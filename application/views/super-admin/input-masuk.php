@@ -30,11 +30,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Kode Agenda</label>
-                                                <input type="text" class="form-control border-input" name="kode">
+                                                <input list="kode" name="kode" style="border: 1px solid gray" class="form-control">
+                                                <datalist id="kode">
+                                                    <?php foreach ($kode as $k): ?>
+                                                        <option value="<?php echo $k->no_agenda; ?>">
+                                                    <?php endforeach ?>
+                                                </datalist>    
                                             </div>
                                         </div>
                                     </div>
