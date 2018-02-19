@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 10 Feb 2018 pada 03.59
+-- Generation Time: 19 Feb 2018 pada 02.13
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -103,15 +103,16 @@ CREATE TABLE `surat_keluar` (
   `no_surat` varchar(225) NOT NULL,
   `kepada` varchar(200) NOT NULL,
   `perihal` varchar(200) NOT NULL,
-  `pengelola` varchar(200) NOT NULL
+  `pengelola` varchar(200) NOT NULL,
+  `foto` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `surat_keluar`
 --
 
-INSERT INTO `surat_keluar` (`id_keluar`, `tgl_surat`, `kode_agenda`, `no_surat`, `kepada`, `perihal`, `pengelola`) VALUES
-(2, '2018-01-03', '0987', '876/456', 'abi', 'surat', 'nadia');
+INSERT INTO `surat_keluar` (`id_keluar`, `tgl_surat`, `kode_agenda`, `no_surat`, `kepada`, `perihal`, `pengelola`, `foto`) VALUES
+(2, '2018-01-03', '0987', '876/456', 'abi', 'surat', 'nadia', '');
 
 -- --------------------------------------------------------
 
@@ -129,6 +130,7 @@ CREATE TABLE `surat_masuk` (
   `dari` varchar(200) NOT NULL,
   `perihal` varchar(200) NOT NULL,
   `pengelola` varchar(200) NOT NULL,
+  `foto` varchar(225) NOT NULL,
   `pemberi_despos` varchar(225) NOT NULL,
   `untuk` varchar(225) NOT NULL,
   `isi_despos` varchar(225) NOT NULL,
@@ -141,8 +143,11 @@ CREATE TABLE `surat_masuk` (
 -- Dumping data untuk tabel `surat_masuk`
 --
 
-INSERT INTO `surat_masuk` (`id_masuk`, `tgl_surat`, `diterima_tgl`, `kode_agenda`, `no_surat`, `jenis_surat`, `dari`, `perihal`, `pengelola`, `pemberi_despos`, `untuk`, `isi_despos`, `terusan`, `status`, `notis`) VALUES
-(6, '2018-02-08', '2018-01-30', '420', '123/098.098', 'RESMI', 'smkn 1 lumajang', 'rapat kepsek', 'tata usaha', 'tata usaha', 'Dilaksanakan', 'asdfgh', 'WK1', '', '');
+INSERT INTO `surat_masuk` (`id_masuk`, `tgl_surat`, `diterima_tgl`, `kode_agenda`, `no_surat`, `jenis_surat`, `dari`, `perihal`, `pengelola`, `foto`, `pemberi_despos`, `untuk`, `isi_despos`, `terusan`, `status`, `notis`) VALUES
+(1, '2018-02-01', '2018-02-03', '420', '420/VII/201', 'RESMI', 'sekolah', 'lomba', 'nadiya', '', 'kepsek', 'Dijawab/direspon', 'di arsipkan', 'WK3', '1', ''),
+(2, '2018-02-02', '2018-02-14', '800', '800/99/2017', 'RAHASIA', 'dinas', 'Ucapan terimakasih', 'nadiyatiq', '', 'kepsek', 'Dilaksanakan', 'di arsipkan', 'WK1', '0', ''),
+(3, '2018-02-08', '0000-00-00', '423.7', '423.7/88/89', 'PRIBADI', 'pak tomo', 'terima', 'nadia', '', '', '', '', '', '1', ''),
+(4, '2018-02-12', '0000-00-00', '420', '7898/avuh', 'RESMI', 'sekolah', 'lomba antar sekolah', 'nadia', '', '', '', '', '', '1', '');
 
 -- --------------------------------------------------------
 
@@ -224,7 +229,7 @@ ALTER TABLE `desposisi`
 -- AUTO_INCREMENT for table `kode_agenda`
 --
 ALTER TABLE `kode_agenda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `surat_keluar`
@@ -236,7 +241,17 @@ ALTER TABLE `surat_keluar`
 -- AUTO_INCREMENT for table `surat_masuk`
 --
 ALTER TABLE `surat_masuk`
-  MODIFY `id_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `surat_masuk`
+--
+ALTER TABLE `surat_masuk`
+  ADD CONSTRAINT `surat_masuk_ibfk_1` FOREIGN KEY (`id_masuk`) REFERENCES `kode_agenda` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
