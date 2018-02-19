@@ -25,3 +25,15 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="<?php echo base_url('asset/css/themify-icons.css'); ?>" rel="stylesheet">
+
+    <link rel="icon" type="image/icon" href="asset/images3/tabicon.ico">
+
+        <link rel="stylesheet" type="text/css" href="">
+        <link href="<?php echo base_url('asset/css3/bootstrap.min.css'); ?>" rel="stylesheet">
+        <link href="<?php echo base_url('asset/css3/bootstrap-theme.min.css'); ?>" rel="stylesheet">
+        <link href="<?php echo base_url('asset/css3/font-awesome.min.css'); ?>" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,700i' rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400,700,700i|Josefin+Sans:700' rel='stylesheet' type='text/css'>
+        <link href="<?php echo base_url('asset/css3/main.css'); ?>" rel="stylesheet">
+        <link rel="icon" href="<?php echo base_url('asset/logo.png/'); ?>">
+        <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
