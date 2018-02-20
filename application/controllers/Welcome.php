@@ -53,6 +53,7 @@ class Welcome extends CI_Controller {
 		$id = $this->masuk->get_masuk();
 		$object = array(
 			'tgl_surat' 	=> $this->input->post('tanggal'),
+			'diterima_tgl' => $this->input->post('diterima'),
 			'kode_agenda' 	=> $this->input->post('kode'),
 			'no_surat' 		=> $this->input->post('nosur'),
 			'jenis_surat'   => $this->input->post('jenis'),
@@ -82,7 +83,8 @@ class Welcome extends CI_Controller {
 	public function editmasuk($id)
 	{
 		$where = array('id_masuk' => $id);
-		$object = array('id_masuk' => $id, 
+		$object = array('id_masuk' => $id,
+						'diterima_tgl' => $this->input->post('diterima'),
 						'tgl_surat' => $this->input->post('tanggal'),
 						'kode_agenda' => $this->input->post('kode'),
 						'no_surat' => $this->input->post('nosur'),
@@ -118,7 +120,6 @@ class Welcome extends CI_Controller {
 	{
 		$where  = array('id_masuk' => $id );
 		$object = array(
-						'diterima_tgl' => $this->input->post('diterima'),
 						'pemberi_despos' => $this->input->post('pemberi'),
 						'terusan' => $this->input->post('terusan'),
 						'untuk' => $this->input->post('untuk'),
