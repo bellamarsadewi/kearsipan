@@ -30,15 +30,23 @@ class Login extends CI_Controller {
 		$cek = $this->masuk->cek_login("user",$where);
 		if($cek->num_rows() > 0){
  
-			$data_session = array(
-				'nama' => $username,
-				'status' => "login"
-				);
+			foreach ($cek->result() as $l) {
+				$data_session = array(
+										'username' => $username,
+										'level' => $d->level,
+										'status' => 'login' );
+			}
  
 			$this->session->set_userdata($data_session);
  
 			redirect(base_url("Welcome/dashboard"));
  
+		}if ($this->session->userdata('level') == 'admin' ) {
+
+			redirect('Welcome/dashboard');
+		}else if ($this->session->userdata('level') == 'tugas') {
+			
+			redirect('admin/dashboard');
 		}else{
 			echo "Username dan password salah !";
 		}
