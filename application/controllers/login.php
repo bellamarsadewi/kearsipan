@@ -48,7 +48,7 @@ class Login extends CI_Controller {
 			
 			redirect('admin/dashboard');
 		}else{
-			echo "Username dan password salah !";
+			echo "Username dan password salah!";
 		}
 	}
 
