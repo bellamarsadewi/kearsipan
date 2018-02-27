@@ -7,15 +7,14 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('masuk');
-		$this->load->helper('url','login','security','form');
+		$this->load->helper('url', 'form');
 
-		if ($this->session->userdata('status') != "login") {
-			redirect(base_url('login'));
+		if ($this->session->userdata('level') != "superadmin") {
+			redirect('login');
 		}
 
 	}
 	
-
 	public function dashboard()
 	{
 		$this->load->view('super-admin/dashboard');

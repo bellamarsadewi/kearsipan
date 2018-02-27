@@ -1,34 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<?php include 'css.php'; ?>
+    <?php include 'css.php'; ?>
 
 </head>
 <body>
+
 <div class="wrapper">
     <?php include 'sidebar.php'; ?>
-<div class="main-panel">
+    <div class="main-panel">
     <?php include 'navigasi.php'; ?>
 
-
-                    <?php foreach ($tambah as $t): ?>
-                <form method="post" action="<?php echo base_url('index.php/Welcome/add_despos/').$t->id_masuk; ?>">
-                    <div class="col-lg-12 col-md-12">
+   <?php foreach ($tambah as $t): ?>
+        <form method="post" action="<?php echo base_url('index.php/Welcome/add_despos/').$t->id_masuk; ?>">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 col-md-7">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Tambahkan desposisi</h4>
+                                <h4 class="title">Tambah Desposisi</h4>
                             </div>
                             <div class="content">
                                 <form>
                                     <div class="row">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Tanggal Diterima</label>
                                                 <input type="date" class="form-control border-input" name="diterima" value="<?php echo $t->diterima_tgl; ?>">
                                             </div>
+                                        </div>
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Pemberi Desposisi</label>
                                                 <input type="text" class="form-control border-input" name="pemberi" value="<?php echo $t->pemberi_despos; ?>">
                                             </div>
+                                        </div>
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Untuk</label>
                                                 <select name="untuk" class="form-control" value="<?php echo $t->untuk; ?>">
@@ -44,10 +52,14 @@
                                                     <option value="Lainnya">Lainnya</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Isi Desposisi</label>
                                                 <input type="textarea" class="form-control border-input" name="isi" value="<?php echo $t->isi_despos; ?>">
                                             </div>
+                                        </div>
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                             <label>Diteruskan ke: </label>
                                             <select name="terusan" class="form-control" value="<?php echo $t->terusan; ?>">
@@ -59,22 +71,30 @@
                                                 <option value="Lainnya">Lainnya</option>
                                             </select>
                                             </div>
+                                        </div>
+                                        <div class="col-md-12">
                                             <div class="form-control">
-                                                <button type="submit" class="btn btn-info btn-fill btn-wd">Tambah</button>
+                                                <center><button type="submit" class="btn btn-info btn-fill btn-wd">Tambah</button></center>
                                             </div>  
+                                        </div>
+
                                     </div>
                                     <div class="clearfix"></div>
                                 </form>
-                                <?php endforeach ?>
                             </div>
                         </div>
                     </div>
-</form>
-
-
-    
+                </div>
+            </div>
+        </div>
+        </form>
+       <?php endforeach ?>
+    </div>
 </div>
 </div>
+</div>
+
 </body>
+
     <?php include 'js.php'; ?>
 </html>

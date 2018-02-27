@@ -3,7 +3,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="<?php echo base_url('index.php/Welcome/dahsboard/'); ?>" class="simple-text">
-                    KEARSIPAN
+                    KEARSIPAN (SUPER ADMIN)
                 </a>
             </div>
 

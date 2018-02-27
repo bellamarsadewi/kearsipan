@@ -23,28 +23,28 @@ class Login extends CI_Controller {
 	public function aksi_login(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
+
 		$where = array(
 			'username' => $username,
 			'password' => $password
 			);
-		$cek = $this->masuk->cek_login("user",$where);
+
+		$cek = $this->masuk->cek_login('user',$where);
 		if($cek->num_rows() > 0){
  
 			foreach ($cek->result() as $l) {
 				$data_session = array(
 										'username' => $username,
-										'level' => $d->level,
+										'level' => $l->level,
 										'status' => 'login' );
 			}
  
 			$this->session->set_userdata($data_session);
  
-			redirect(base_url("Welcome/dashboard"));
- 
-		}if ($this->session->userdata('level') == 'admin' ) {
+		}if ($this->session->userdata('level') == 'superadmin' ) {
 
 			redirect('Welcome/dashboard');
-		}else if ($this->session->userdata('level') == 'tugas') {
+		}else if ($this->session->userdata('level') == 'admin') {
 			
 			redirect('admin/dashboard');
 		}else{

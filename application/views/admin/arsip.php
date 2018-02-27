@@ -37,7 +37,7 @@
                                             <td><?php echo $a->no_agenda; ?></td>
                                             <td><?php echo $a->keterangan; ?></td>
                                             <td>
-                                                <a class="btn btn-primary" href="<?php echo base_url('index.php/Welcome/detail_arsip/').$a->no_agenda; ?>">
+                                                <a class="btn btn-primary" href="<?php echo base_url('index.php/arsip/detail_arsip/').$a->no_agenda; ?>">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                             </td>

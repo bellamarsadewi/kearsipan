@@ -24,7 +24,6 @@
                                         <th>Dari</th>
                                         <th>Perihal</th>
                                         <th>Jenis Surat</th>
-                                        <th>Aksi</th>
                                     </thead>
                                     <tbody>
                                         <?php 
@@ -57,12 +56,6 @@
                                             <input type="hidden" name="jenis" 
                                                     value="<?php echo $u->jenis_surat; ?>">
                                             </td>
-                                            <td>
-                                                <a href="<?php echo base_url('index.php/Welcome/detail/').$u->id_masuk; ?>" class="btn btn-info">
-                                                    <i class="fa fa-plus-circle"></i>
-                                                </a>
-                                                
-                                            </td>
 
                                              <?php } ?>
                                          </tr>
@@ -90,9 +83,6 @@
                                             <td><?php echo $p->untuk; ?></td>
                                             <td>
                                                 <a href="<?php echo base_url('index.php/Welcome/laporan_pdf/').$p->id_masuk; ?>" class="btn btn-success">PDF
-                                                </a>
-                                                <a href="<?php echo base_url('index.php/Welcome/kirim/').$u->id_masuk; ?>" class="btn btn-danger">
-                                                    <i class="fa fa-save"></i>
                                                 </a>
                                             </td>
                                         </tr>

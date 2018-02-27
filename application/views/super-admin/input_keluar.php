@@ -16,7 +16,7 @@
                     <div class="col-lg-8 col-md-7">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Tambah Agenda Surat Masuk</h4>
+                                <h4 class="title">Tambah Agenda Surat Keluar</h4>
                             </div>
                             <div class="content">
                                 <form>

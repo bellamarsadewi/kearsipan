@@ -12,7 +12,7 @@
 
 
                     <?php foreach ($tambah as $t): ?>
-                <form method="post" action="<?php echo base_url('index.php/Welcome/add_despos/').$t->id_masuk; ?>">
+                <form method="post" action="<?php echo base_url('index.php/admin/add_despos/').$t->id_masuk; ?>">
                     <div class="col-lg-12 col-md-12">
                         <div class="card">
                             <div class="header">

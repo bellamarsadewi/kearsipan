@@ -17,7 +17,8 @@
                     <div>
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Detail Arsip</h4>
+                                <h4 class="title">Agenda Surat Masuk
+                                </h4>
                               
                             </div>
                             
@@ -25,27 +26,29 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <th>No</th>
-                                    	<th>Tanggal</th>
-                                    	<th>Kode Agenda</th>
-                                    	<th>No Surat</th>
-                                    	<th>Dari</th>
+                                      	<th>Tanggal</th>
+                                      	<th>Kode Agenda</th>
+                                      	<th>No Surat</th>
+                                        <th>Jenis Surat</th>
+                                      	<th>Dari</th>
                                         <th>Perihal</th>
                                         <th>Pengelola</th>
-                                        <th>Aksi</th>
                                     </thead>
                                     <tbody>
                                         <?php 
                                             $no = 1;
-                                            foreach ($detail as $p) {
+                                            foreach ($masuk as $u) {
                                          ?>
                                          <tr>
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $p->tgl_surat; ?></td>
-                                            <td><?php echo $p->kode_agenda; ?></td>
-                                            <td><?php echo $p->no_surat; ?></td>
-                                            <td><?php echo $p->dari; ?></td>
-                                            <td><?php echo $p->perihal; ?></td>
-                                            <td><?php echo $p->pengelola; ?></td>
+                                            <td><?php echo $u->tgl_surat; ?></td>
+                                            <td><?php echo $u->kode_agenda; ?></td>
+                                            <td><?php echo $u->no_surat; ?></td>
+                                            <td><?php echo $u->jenis_surat; ?></td>
+                                            <td><?php echo $u->dari; ?></td>
+                                            <td><?php echo $u->perihal; ?></td>
+                                            <td><?php echo $u->pengelola; ?></td>
+                                        
                                              <?php } ?>
                                          </tr>
                                     </tbody>
@@ -60,6 +63,27 @@
 </div>
 </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#email').on('submit',function(e) {  
+  $.ajax({
+      url:'subscribe_act.php', //nama action script php sobat
+      data:$(this).serialize(),
+      type:'POST',
+      success:function(data){
+        console.log(data);
+     swal("Success!", "Message sent!", "success");
+      },
+      error:function(data){
+     swal("Oops...", "Something went wrong :(", "error");
+      }
+    });
+    e.preventDefault(); 
+  });
+});
+</script>
+
 </body>
 
   <?php include 'js.php'; ?>

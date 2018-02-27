@@ -6,13 +6,14 @@ class Admin extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('masuk');
 		$this->load->helper('url','form');
 
-		if ($this->session->userdata('level') != 'tugas') {
-			redirect(base_url('login'));
+		if ($this->session->userdata('level') != "admin") {
+			redirect('login');
 		}
-	}
 
+}
 	public function dashboard()
 	{
 		$this->load->view('admin/dashboard');
@@ -22,7 +23,7 @@ class Admin extends CI_Controller {
 	public function masuk()
 	{
 		$data['masuk'] = $this->masuk->tabmasuk('surat_masuk');
-		$this->load->view('super-admin/surat_masuk',$data);
+		$this->load->view('admin/surat_masuk',$data);
 	}
 
 	//desposisi
@@ -30,7 +31,7 @@ class Admin extends CI_Controller {
 	{
 		$where = array('status' => '0' );
 		$data['ms'] = $this->db->get_where('surat_masuk',$where)->result();
-		$this->load->view('super-admin/desposisi',$data);
+		$this->load->view('admin/desposisi',$data);
 	}
 
 	public function detail($id)
@@ -39,7 +40,7 @@ class Admin extends CI_Controller {
 		$data['tambah'] = $this->masuk->detail('surat_masuk',$where)->result(); 
 		$data['editmas'] = $this->db->get('surat_masuk',$where)->result();
 		$data['despos'] = $this->masuk->detail('surat_masuk',$where)->result();
-		$this->load->view('super-admin/detail',$data);
+		$this->load->view('admin/detail',$data);
 	}
 
 	public function add_despos($id)
@@ -51,7 +52,7 @@ class Admin extends CI_Controller {
 						'untuk' => $this->input->post('untuk'),
 						'isi_despos'=>$this->input->post('isi'));
 		$this->db->update('surat_masuk',$object,$where);
-		redirect('Welcome/desposisi');
+		redirect('admin/desposisi');
 	}
 
 	//tutup desposisi
@@ -61,7 +62,7 @@ class Admin extends CI_Controller {
 	public function arsip()
 	{
 		$data['arsip'] = $this->db->get('kode_agenda')->result();
-		$this->load->view('super-admin/arsip',$data);
+		$this->load->view('admin/arsip',$data);
 	}
 
 	public function detail_arsip($kode)
@@ -69,7 +70,7 @@ class Admin extends CI_Controller {
 		$kode = array('kode_agenda' => $kode,
 						'status' => 1 );
 		$data['detail'] = $this->db->get_where('surat_masuk' ,$kode)->result();
-		$this->load->view('super-admin/detail_arsip', $data);
+		$this->load->view('admin/detail_arsip', $data);
 	}
 
 		public function kirim($id)
@@ -80,7 +81,7 @@ class Admin extends CI_Controller {
 		$res = $this->db->update('surat_masuk',$data ,$where);
 
 		if ($res >= 1) {
-			redirect('Welcome/desposisi');
+			redirect('admin/desposisi');
 						}
 	}
 
@@ -100,6 +101,7 @@ class Admin extends CI_Controller {
 
 
 	}
+
 
 }
 
