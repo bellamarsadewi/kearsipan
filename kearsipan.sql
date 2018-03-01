@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19 Feb 2018 pada 02.13
+-- Generation Time: 02 Mar 2018 pada 00.54
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -42,17 +42,11 @@ CREATE TABLE `arsip` (
 
 CREATE TABLE `desposisi` (
   `id_despos` int(11) NOT NULL,
-  `id_masuk` int(11) NOT NULL,
-  `tgl_surat` date NOT NULL,
-  `asal_surat` varchar(200) NOT NULL,
-  `no_surat` varchar(225) NOT NULL,
-  `perihal` varchar(225) NOT NULL,
-  `diterima_tgl` date NOT NULL,
-  `kode_agenda` varchar(225) NOT NULL,
   `pemberi_despos` varchar(200) NOT NULL,
   `untuk` varchar(200) NOT NULL,
   `isi_desposisi` varchar(200) NOT NULL,
-  `terusan` varchar(200) NOT NULL
+  `terusan` varchar(200) NOT NULL,
+  `status_despos` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -107,13 +101,6 @@ CREATE TABLE `surat_keluar` (
   `foto` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `surat_keluar`
---
-
-INSERT INTO `surat_keluar` (`id_keluar`, `tgl_surat`, `kode_agenda`, `no_surat`, `kepada`, `perihal`, `pengelola`, `foto`) VALUES
-(2, '2018-01-03', '0987', '876/456', 'abi', 'surat', 'nadia', '');
-
 -- --------------------------------------------------------
 
 --
@@ -144,10 +131,9 @@ CREATE TABLE `surat_masuk` (
 --
 
 INSERT INTO `surat_masuk` (`id_masuk`, `tgl_surat`, `diterima_tgl`, `kode_agenda`, `no_surat`, `jenis_surat`, `dari`, `perihal`, `pengelola`, `foto`, `pemberi_despos`, `untuk`, `isi_despos`, `terusan`, `status`, `notis`) VALUES
-(1, '2018-02-01', '2018-02-03', '420', '420/VII/201', 'RESMI', 'sekolah', 'lomba', 'nadiya', '', 'kepsek', 'Dijawab/direspon', 'di arsipkan', 'WK3', '1', ''),
-(2, '2018-02-02', '2018-02-14', '800', '800/99/2017', 'RAHASIA', 'dinas', 'Ucapan terimakasih', 'nadiyatiq', '', 'kepsek', 'Dilaksanakan', 'di arsipkan', 'WK1', '0', ''),
-(3, '2018-02-08', '0000-00-00', '423.7', '423.7/88/89', 'PRIBADI', 'pak tomo', 'terima', 'nadia', '', '', '', '', '', '1', ''),
-(4, '2018-02-12', '0000-00-00', '420', '7898/avuh', 'RESMI', 'sekolah', 'lomba antar sekolah', 'nadia', '', '', '', '', '', '1', '');
+(10, '2017-05-23', '2017-05-25', '027.05', '420/VII/201', 'RESMI', 'kepala desa manegen', 'undangan musyawarah', 'seksi desa', 'contoh_surat_resmi.JPG', 'seksi desa', 'Dilaksanakan', 'undangan musyawarah', 'Lainnya', '0', '1'),
+(11, '2013-12-24', '2013-12-26', '421', '421/SMPN1XI', 'RESMI', 'Kepala Sekolah SMP 1 SERANG', 'Undangan', 'Tata Usaha', 'surat_resmi_sekolah.jpg', 'Tata Usaha', 'Dilaksanakan', 'undangan sosialisasi beasiswa', 'KTU', '0', '0'),
+(12, '2017-01-08', '2017-01-10', '421', '421/OSIS/MA', 'RESMI', 'OSIS MA AL-FATAH', 'Undangan', 'Ketua OSIS MA AL-FATAH', '', 'PEMBINA OSIS', 'Dilaksanakan', 'Undagan Maulid Nabi Muhammad SAW', 'KTU', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -167,7 +153,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `level`) VALUES
-(1, 'admin', 'admin', 'admin');
+(1, 'admin', 'admin', 'superadmin'),
+(2, 'tugas', 'tugas', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -235,13 +222,13 @@ ALTER TABLE `kode_agenda`
 -- AUTO_INCREMENT for table `surat_keluar`
 --
 ALTER TABLE `surat_keluar`
-  MODIFY `id_keluar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_keluar` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `surat_masuk`
 --
 ALTER TABLE `surat_masuk`
-  MODIFY `id_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_masuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
