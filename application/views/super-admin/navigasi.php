@@ -18,17 +18,20 @@
                             </a>
                         </li>
                         <li class="dropdown">
+                            <?php $notif = $this->db->get_where('surat_masuk', array('notis' => '0')); ?>
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="ti-bell"></i>
-                                    <p class="notification">5</p>
+                                    <p class="notification"><?php echo $notif->num_rows(); ?></p>
                                     <p>Notifications</p>
                                     <b class="caret"></b>
                               </a>
                               <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
+                                <?php foreach ($notif->result_array() as $key) {
+                                    ?>
+                                <li><a href="<?php echo base_url('index.php/Welcome/update_notis/'.$key['id_masuk']) ?>">Notification 1</a></li>
+                                    <?php
+                                } ?>
+                                
                                 <li><a href="#">Another notification</a></li>
                               </ul>
                         </li>

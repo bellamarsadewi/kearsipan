@@ -11,7 +11,7 @@
     <div class="main-panel">
     <?php include 'navigasi.php'; ?>
 
-    <form method="post" action="<?php echo base_url('index.php/Welcome/add_masuk'); ?>">
+    <form method="post" action="<?php echo base_url('index.php/Welcome/add_masuk'); ?>" enctype="multipart/form-data">
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -46,6 +46,8 @@
                                                 <datalist id="kode">
                                                     <?php foreach ($kode as $k): ?>
                                                         <option value="<?php echo $k->no_agenda; ?>">
+                                                            <?php echo $k->keterangan; ?>
+                                                        </option>
                                                     <?php endforeach ?>
                                                 </datalist>    
                                             </div>
@@ -93,6 +95,15 @@
                                             <div class="form-group">
                                                 <label>Pengelola</label>
                                                 <input type="text" class="form-control border-input" name="pengelola">
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Foto</label><br>
+                                                <img id="blah" src="<?php echo base_url('asset/up.png'); ?>" class="img-thumbnail" alt="your image" /><br><br>
+                                                <input type='file' name="foto" onchange="readURL(this);" />
                                             </div>
                                         </div>
                                     </div>

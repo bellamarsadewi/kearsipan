@@ -7,6 +7,7 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('masuk');
+		$this->load->library('upload');
 		$this->load->helper('url', 'form');
 
 		if ($this->session->userdata('level') != "superadmin") {
@@ -60,8 +61,17 @@ class Welcome extends CI_Controller {
 			'perihal' 		=> $this->input->post('perihal'),
 			'pengelola' 	=> $this->input->post('pengelola'),
 			'foto'			=> $foto,
-			'status' 		=> 0);
+			'status' 		=> 0,
+			'notis' 		=> '0'
+		);
 		$this->masuk->add_masuk('surat_masuk',$object);
+		redirect('Welcome/desposisi');
+	}
+
+	// update_notis
+	public function update_notis($id_masuk)
+	{
+		$this->db->set(array('notis' => '1'))->where('id_masuk', $id_masuk)->update('surat_masuk');
 		redirect('Welcome/desposisi');
 	}
 
@@ -81,6 +91,20 @@ class Welcome extends CI_Controller {
 
 	public function editmasuk($id)
 	{
+		$config['upload_path'] = './upload/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']  = '5000';
+		$config['max_width']  = '6000';
+		$config['max_height']  = '2048';
+		$this->load->library('upload',$config);
+		$this->upload->initialize($config);
+		if ( ! $this->upload->do_upload('foto')){
+			$foto = "";
+		}
+		else{
+			$foto = $this->upload->file_name;
+		}
+
 		$where = array('id_masuk' => $id);
 		$object = array('id_masuk' => $id,
 						'diterima_tgl' => $this->input->post('diterima'),
@@ -90,7 +114,8 @@ class Welcome extends CI_Controller {
 						'jenis_surat' => $this->input->post('jenis'),
 						'dari' => $this->input->post('dari'),
 						'perihal' => $this->input->post('perihal'),
-						'pengelola'=>$this->input->post('pengelola'));
+						'pengelola'=>$this->input->post('pengelola'),
+						'foto' => $foto);
 		//die(var_dump($object));
 		$this->masuk->editmas('surat_masuk',$object,$where);
 		redirect('Welcome/masuk');

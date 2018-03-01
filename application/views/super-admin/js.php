@@ -27,10 +27,10 @@
 
         	$.notify({
             	icon: 'ti-gift',
-            	message: "Welcome to <b>Paper Dashboard</b> - a beautiful Bootstrap freebie for your next project."
+            	message: "Selamat Datang di <b>Pengarsipan Surat</b> - Project UKK SMKN 1 LUMAJANG tahun 2018."
 
             },{
-                type: 'success',
+                type: 'info',
                 timer: 4000
             });
 

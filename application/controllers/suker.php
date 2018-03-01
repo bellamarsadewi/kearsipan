@@ -13,6 +13,7 @@ class Suker extends CI_Controller {
 	public function suker()
 	{
 		$data['suker'] = $this->masuk->suker('surat_keluar');
+		$data['keluar'] = $this->db->get('kode_agenda');
 		$this->load->view('super-admin/surat_keluar',$data);
 	}
 

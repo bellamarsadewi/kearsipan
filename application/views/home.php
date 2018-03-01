@@ -35,11 +35,14 @@
                         <p class="home-description">
                             Pengarsipan Surat Masuk dan Surat Keluar
                         </p>
-                        <div class="btn-group-vertical custom_btn animated slideinright">
-                            <div id="about" class="btn btn-rabbit">Tentang</div>
-                            <div id="work" class="btn btn-rabbit">Detail</div>
-                            <a href="<?php echo base_url('index.php/login/login'); ?>"><div id="contact" class="btn btn-rabbit">Login Admin</div></a>
-                        </div>      
+                        <center>
+                            <div class="btn-group-vertical custom_btn animated slideinright">
+                            <div id="about" style="padding: 10%;font-size: 20px;" class="btn btn-rabbit">Tentang</div>
+                            <div id="work" style="padding: 10%;font-size: 20px;" class="btn btn-rabbit">Detail</div>
+                            <a href="<?php echo base_url('index.php/login/login'); ?>"><div class="btn btn-rabbit" style="padding: 10%;font-size: 20px;">Login Admin</div></a>
+                        </div> 
+                        </center>
+                             
                     </div>
                 </div>
 
@@ -58,7 +61,7 @@
                         </div>
                         <p class='subtitle'>Tentang Aplikasi Pengarsipan Surat Masuk dan Keluar</p>
                         <p class="info">Aplikasi ini dibuat untuk mempermudah proses dalam pengarsipan surat-menyurat. Terdapat Surat Masuk, Surat Keluar, Desposisi, dan Arsip</p>  
-                        <center><a href="#index" class="btn btn-rabbit back"> <i class="fa fa-angle-left" aria-hidden="true"></i> Back to home </a></center>
+                        <center><a href="#index" class="btn btn-rabbit back"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to home </a></center>
                     </div>
                 </div>
             </div>            

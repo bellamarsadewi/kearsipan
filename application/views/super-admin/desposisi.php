@@ -17,14 +17,14 @@
                             </div>
         <table class="table table-striped">
                                     <thead>
-                                        <th>No</th>
-                                        <th>Tanggal</th>
-                                        <th>Kode Agenda</th>
-                                        <th>No Surat</th>
-                                        <th>Dari</th>
-                                        <th>Perihal</th>
-                                        <th>Jenis Surat</th>
-                                        <th>Aksi</th>
+                                        <th style="width: 50px;">No</th>
+                                        <th style="width: 150px;">Tanggal</th>
+                                        <th style="width: 150px;">Kode Agenda</th>
+                                        <th style="width: 150px;">No Surat</th>
+                                        <th style="width: 200px;">Dari</th>
+                                        <th style="width: 150px;">Perihal</th>
+                                        <th style="width: 100px;">Jenis Surat</th>
+                                        <th style="width: 300px;">Aksi</th>
                                     </thead>
                                     <tbody>
                                         <?php 

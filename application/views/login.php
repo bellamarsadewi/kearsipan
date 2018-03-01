@@ -33,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="password" name="password" style="width: 90%;" placeholder="Password">
 					<input type="submit" name="Sign In" value="Login">					
 				</form>
-				<h5><a href="">Go Back to Home</a></h5>
+				<h5><a href="<?php base_url('index.php/Welcome/dashboard/'); ?>">Go Back to Home</a></h5>
 			</div>
       </div>
 </div>

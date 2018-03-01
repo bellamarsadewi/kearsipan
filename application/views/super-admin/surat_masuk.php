@@ -26,15 +26,14 @@
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-striped">
                                     <thead>
-                                        <th>No</th>
-                                      	<th>Tanggal</th>
-                                      	<th>Kode Agenda</th>
-                                      	<th>No Surat</th>
-                                        <th>Jenis Surat</th>
-                                      	<th>Dari</th>
-                                        <th>Perihal</th>
-                                        <th>Pengelola</th>
-                                        <th>Aksi</th>
+                                        <th style="width: 50px;">No</th>
+                                      	<th style="width: 150px;">Tanggal</th>
+                                      	<th style="width: 150px;">No Surat</th>
+                                        <th style="width: 120px;">Jenis Surat</th>
+                                      	<th style="width: 150px;">Dari</th>
+                                        <th style="width: 150px;">Perihal</th>
+                                        <th style="width: 100px;">Pengelola</th>
+                                        <th style="width: 300px;">Aksi</th>
                                     </thead>
                                     <tbody>
                                         <?php 
@@ -44,14 +43,13 @@
                                          <tr>
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $u->tgl_surat; ?></td>
-                                            <td><?php echo $u->kode_agenda; ?></td>
                                             <td><?php echo $u->no_surat; ?></td>
                                             <td><?php echo $u->jenis_surat; ?></td>
                                             <td><?php echo $u->dari; ?></td>
                                             <td><?php echo $u->perihal; ?></td>
                                             <td><?php echo $u->pengelola; ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('index.php/Welcome/'); ?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                                <a href="<?php echo base_url('upload/').$u->foto; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                                 <a href="<?php echo base_url('index.php/Welcome/editmas/').$u->id_masuk; ?>" class="btn btn-primary">
                                                     <i class="fa fa-edit"></i></a>
                                                 <a href="<?php echo base_url('index.php/Welcome/delmasuk/').$u->id_masuk; ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
