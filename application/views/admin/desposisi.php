@@ -24,6 +24,7 @@
                                         <th>Dari</th>
                                         <th>Perihal</th>
                                         <th>Jenis Surat</th>
+                                        <th>Detail Surat</th>
                                     </thead>
                                     <tbody>
                                         <?php 
@@ -56,6 +57,9 @@
                                             <input type="hidden" name="jenis" 
                                                     value="<?php echo $u->jenis_surat; ?>">
                                             </td>
+                                            <td>
+                                                <a href="<?php echo base_url('upload/').$u->foto; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                            </td>
 
                                              <?php } ?>
                                          </tr>
@@ -82,7 +86,7 @@
                                             <td><?php echo $p->terusan; ?></td>
                                             <td><?php echo $p->untuk; ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('index.php/Welcome/laporan_pdf/').$p->id_masuk; ?>" class="btn btn-success">PDF
+                                                <a href="<?php echo base_url('index.php/admin/laporan_pdf/').$p->id_masuk; ?>" class="btn btn-success">PDF
                                                 </a>
                                             </td>
                                         </tr>

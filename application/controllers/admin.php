@@ -24,6 +24,10 @@ class Admin extends CI_Controller {
 	{
 		$data['masuk'] = $this->masuk->tabmasuk('surat_masuk');
 		$this->load->view('admin/surat_masuk',$data);
+
+
+		$object = array('foto' => $foto);
+		$this->db->get('surat_masuk',$object);
 	}
 
 	//desposisi

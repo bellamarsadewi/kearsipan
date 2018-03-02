@@ -48,16 +48,19 @@ class Login extends CI_Controller {
 			
 			redirect('admin/dashboard');
 		}else{
-			echo "Username dan password salah!";
+			echo "Username dan password salah !";
 		}
 	}
 
+
+
 	public function logout(){
 		$this->session->sess_destroy();
-		redirect(base_url("login/index"));
-	}
+		redirect('login');
+	
 
 	}
+}
 
 /* End of file login.php */
 /* Location: ./application/controllers/login.php */
